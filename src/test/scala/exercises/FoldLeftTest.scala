@@ -14,3 +14,11 @@ class FoldLeftTest:
   @Test
   def testFildLeftWithOneElementSequence() =
     assertEquals(1, foldLeft(Cons(1, Nil()))(0)(_ + _))
+  
+  @Test
+  def testFoldLeftWithMoreElementsSequence() =
+    assertEquals(6, foldLeft
+      (Cons(1, Cons(2, Cons(3, Nil()))))
+      (0)
+      (_ + _)
+    )

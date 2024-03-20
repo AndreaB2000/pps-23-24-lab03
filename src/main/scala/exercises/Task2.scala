@@ -22,6 +22,6 @@ object Task2 extends App:
     )
 
   def foldLeft[A](l: Sequence[A])(defaultValue: A)(operator: (A, A) => A): A = l match
-    case Cons(h, _) => h
+    case Cons(h, t) => operator(h, foldLeft(t)(defaultValue)(operator))
     case _ => defaultValue
   
