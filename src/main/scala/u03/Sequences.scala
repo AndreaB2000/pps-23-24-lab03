@@ -27,10 +27,11 @@ object Sequences: // Essentially, generic linkedlists
       case Cons(_, t)            => filter(t)(pred)
       case Nil()                 => Nil()
         
-    def filterWithFlatMap[A](l1: Sequence[A])(pred: A => Boolean): Sequence[A] = l1 match
-      case Cons(h, t) if pred(h) => Cons(h, filterWithFlatMap(t)(pred))
-      case Cons(_, t) => filterWithFlatMap(t)(pred)
-      case Nil() => Nil()
+    def filterWithFlatMap[A](l1: Sequence[A])(pred: A => Boolean): Sequence[A] =
+      flatMap[A, A](l1)(e => e match
+        case e if pred(e) => Cons(e, Nil())
+        case _ => Nil()
+      )
 
     // Lab 03
     def take[A](l: Sequence[A])(n: Int): Sequence[A] = l match
