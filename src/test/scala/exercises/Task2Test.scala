@@ -15,4 +15,15 @@ class Task2Test:
   
   @Test
   def testGetCoursesWithOneTeacher() =
-    assertEquals(Cons("Matematica", Nil()), getCourses(Cons(Person.Teacher("Marco Rossi", "Matematica"), Nil())))
+    assertEquals(
+      Cons("Matematica", Nil()),
+      getCourses(Cons(Person.Teacher("Marco Rossi", "Matematica"), Nil()))
+    )
+
+  @Test
+  def testGetCoursesWithMultipleTeachers() =
+    assertEquals(
+      Cons("Matematica", Cons("Fisica", Nil())),
+      getCourses(Cons(Person.Teacher("Marco Rossi", "Matematica"), Cons(Person.Teacher("Luca Verdi", "Fisica"), Nil())))
+    )
+
