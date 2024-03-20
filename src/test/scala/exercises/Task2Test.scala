@@ -40,3 +40,20 @@ class Task2Test:
       Nil(),
       getCourses(Cons(Person.Student("Mario Bianchi", 2024), Cons(Person.Student("Giovanni Neri", 2019), Nil())))
     )
+  
+  @Test
+  def testGetCoursesWithMixedSequence() =
+    assertEquals(
+      Cons("Matematica", Cons("Fisica", Nil())),
+      getCourses(
+        Cons(Person.Student("Mario Bianchi", 2024),
+          Cons(Person.Teacher("Marco Rossi", "Matematica"),
+            Cons(Person.Student("Giovanni Neri", 2019),
+              Cons(Person.Teacher("Luca Verdi", "Fisica"),
+                Nil()
+              )
+            )
+          )
+        )
+      )
+    )
