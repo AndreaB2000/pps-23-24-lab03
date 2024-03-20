@@ -4,7 +4,7 @@ import org.junit.*
 import org.junit.Assert.*
 import u02.AlgebraicDataTypes.Person
 
-class Task2Test:
+class PersonsTest:
   import u03.Sequences.*
   import Sequence.*
   import exercises.Task2.*
