@@ -26,4 +26,17 @@ class Task2Test:
       Cons("Matematica", Cons("Fisica", Nil())),
       getCourses(Cons(Person.Teacher("Marco Rossi", "Matematica"), Cons(Person.Teacher("Luca Verdi", "Fisica"), Nil())))
     )
-
+  
+  @Test
+  def testGetCoursesWithStudent() =
+    assertEquals(
+      Nil(),
+      getCourses(Cons(Person.Student("Mario Bianchi", 2024), Nil()))
+    )
+  
+  @Test
+  def testGetCoursesWithMultipleStudents() =
+    assertEquals(
+      Nil(),
+      getCourses(Cons(Person.Student("Mario Bianchi", 2024), Cons(Person.Student("Giovanni Neri", 2019), Nil())))
+    )
