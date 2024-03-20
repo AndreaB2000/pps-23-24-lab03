@@ -10,3 +10,7 @@ class FoldLeftTest:
   @Test
   def testFoldLeftWithEmptySequence() =
     assertEquals(0, foldLeft(Nil())(0)(_ + _))
+  
+  @Test
+  def testFildLeftWithOneElementSequence() =
+    assertEquals(1, foldLeft(Cons(1, Nil()))(0)(_ + _))
