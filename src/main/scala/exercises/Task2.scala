@@ -7,4 +7,7 @@ import u02.AlgebraicDataTypes.Person
 
 object Task2 extends App:
   def getCourses(persons: Sequence[Person]): Sequence[String] =
-    Sequence.Nil()
+    map(persons)(person => person match
+      case Person.Teacher(_, course) => course
+      case _ => ""
+    )
