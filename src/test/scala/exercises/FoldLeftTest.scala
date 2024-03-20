@@ -7,18 +7,21 @@ class FoldLeftTest:
   import exercises.Task2.foldLeft
   import u03.Sequences.Sequence.*
 
+  val defaultValue: Int = 0
+  val operator: (Int, Int) => Int = _ + _
+
   @Test
   def testFoldLeftWithEmptySequence() =
-    assertEquals(0, foldLeft(Nil())(0)(_ + _))
+    assertEquals(0, foldLeft(Nil())(defaultValue)(operator))
   
   @Test
-  def testFildLeftWithOneElementSequence() =
-    assertEquals(1, foldLeft(Cons(1, Nil()))(0)(_ + _))
+  def testFoldLeftWithOneElementSequence() =
+    assertEquals(1, foldLeft(Cons(1, Nil()))(defaultValue)(operator))
   
   @Test
   def testFoldLeftWithMoreElementsSequence() =
     assertEquals(6, foldLeft
       (Cons(1, Cons(2, Cons(3, Nil()))))
-      (0)
-      (_ + _)
+      (defaultValue)
+      (operator)
     )
