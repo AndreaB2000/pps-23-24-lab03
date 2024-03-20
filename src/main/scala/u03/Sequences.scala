@@ -19,10 +19,18 @@ object Sequences: // Essentially, generic linkedlists
       case Cons(h, t) => Cons(mapper(h), map(t)(mapper))
       case Nil()      => Nil()
 
+    def mapWithFlatMap[A, B](l: Sequence[A])(mapper: A => B): Sequence[B] =
+      flatMap[A, B](l)(e => Cons(mapper(e), Nil()))
+      
     def filter[A](l1: Sequence[A])(pred: A => Boolean): Sequence[A] = l1 match
       case Cons(h, t) if pred(h) => Cons(h, filter(t)(pred))
       case Cons(_, t)            => filter(t)(pred)
       case Nil()                 => Nil()
+        
+    def filterWithFlatMap[A](l1: Sequence[A])(pred: A => Boolean): Sequence[A] = l1 match
+      case Cons(h, t) if pred(h) => Cons(h, filterWithFlatMap(t)(pred))
+      case Cons(_, t) => filterWithFlatMap(t)(pred)
+      case Nil() => Nil()
 
     // Lab 03
     def take[A](l: Sequence[A])(n: Int): Sequence[A] = l match
